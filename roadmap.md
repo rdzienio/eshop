@@ -1,5 +1,8 @@
 Sklep internegowy - roadmapa
 - wyświetlenie strony startowej
+    - zwykły szablon - done
+    - kategorie
+    - stylowanie
 - crud dla kategorii
     - kontroler dla kategorii
     - serwis
@@ -9,6 +12,13 @@ Sklep internegowy - roadmapa
     - stylowanie
     - walidacje po obu stronach
 - crud dla towarów
+    - kontroler dla towarów
+    - serwis
+    - repozytorium
+    - entity
+    - html
+    - stylowanie
+    - walidacje po obu stronach
 - obsługa koszyka
 - panel administracyjny
 - stylowanie aplikacji
