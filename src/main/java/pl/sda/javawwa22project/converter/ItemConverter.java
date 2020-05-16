@@ -7,7 +7,7 @@ import pl.sda.javawwa22project.entity.Item;
 @Component
 public class ItemConverter {
 
-    ItemDto fromItem(Item item){
+    public ItemDto fromItem(Item item){
         return ItemDto.builder()
                 .id(item.getId())
                 .itemName(item.getItemName())
