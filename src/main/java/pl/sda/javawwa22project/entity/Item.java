@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table("SHOP_ITEMS")
+@Table(name = "SHOP_ITEMS")
 // 1). define entity
 //  - id
 // - no args constructor
