@@ -15,6 +15,8 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Entity
 @Table(name = "SHOP_ITEMS")
+
+//TODO
 // 1). define entity
 //  - id
 // - no args constructor
