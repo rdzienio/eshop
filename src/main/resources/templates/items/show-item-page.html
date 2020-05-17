@@ -6,7 +6,7 @@
 </head>
 <body>
 <p>Displaying item...</p>
-<p th:text="'Item id: '+ ${itemToShow.id}">Item id: </p>
+<p th:text="'Item id:' + (${itemToShow.id} ?: 'No id')">Item id:</p>
 <p th:text="'Item name: '+ ${itemToShow.itemName}">Item name: </p>
 <p th:text="'Item description: '+ ${itemToShow.description}">Item description: </p>
 <p th:text="'Item category: '+ ${itemToShow.category}">Item category: </p>
