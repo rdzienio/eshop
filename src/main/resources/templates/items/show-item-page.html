@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Display Item</title>
+</head>
+<body>
+<p>Displaying item...</p>
+<p th:text="'Item id: '+ ${itemToShow.id}">Item id: </p>
+<p th:text="'Item name: '+ ${itemToShow.itemName}">Item name: </p>
+<p th:text="'Item description: '+ ${itemToShow.description}">Item description: </p>
+<p th:text="'Item category: '+ ${itemToShow.category}">Item category: </p>
+<p th:text="'Item price: '+ ${itemToShow.price}">Item price: </p>
+<p th:text="'Item quantity: '+ ${itemToShow.quantity}">Item quantity: </p>
+<p th:text="'Item picture: '+ ${itemToShow.picture}">Item picture: </p>
+</body>
+</html>
