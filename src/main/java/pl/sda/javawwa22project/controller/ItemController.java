@@ -1,6 +1,5 @@
 package pl.sda.javawwa22project.controller;
 
-import org.dom4j.rule.Mode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -8,18 +7,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import pl.sda.javawwa22project.converter.ItemConverter;
-import pl.sda.javawwa22project.entity.Item;
+import pl.sda.javawwa22project.dto.ItemDto;
 import pl.sda.javawwa22project.service.ItemService;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
+import java.math.BigDecimal;
+import java.util.stream.Collectors;
 
 // 4). define endpoint in controller
 @Controller
 public class ItemController {
 
-    public static String ITEM_KEY = "itemToShow";
+    public static String ONE_ITEM_KEY = "itemToShow";
+    public static String MANY_ITEMS_KEY = "allItems";
     private static final Logger LOGGER = LoggerFactory.getLogger(ItemController.class);
     private final ItemService itemService;
     private final ItemConverter itemConverter;
@@ -34,8 +33,8 @@ public class ItemController {
         LOGGER.info("getItemById with id: [{}]", id);
         var itemDto = itemService.findById(id)
                 .map(itemConverter::fromItem)
-                .orElse(null);
-        model.addAttribute(ITEM_KEY, itemDto);
+                .orElse(new ItemDto(0L, null, null, null, BigDecimal.ZERO, 0, null));
+        model.addAttribute(ONE_ITEM_KEY, itemDto);
         return "items/show-item-page";
     }
 
@@ -45,13 +44,15 @@ public class ItemController {
     .sorted());
     }*/
 
-    // TODO
-    // metoda wyświetla 3 przykładowe przedmioty
-    @GetMapping("all-items")
+    @GetMapping("/all-items")
     String getAllItems(Model model) {
-        List<Item> itemLis = new ArrayList<>();
-        // dodaj 3 przedmioty
-        model.addAttribute("items", itemLis);
+        LOGGER.info("getAllItems");
+        var allItemsDto = itemService.findAllItems()
+                .stream()
+                .map(itemConverter::fromItem)
+                .collect(Collectors.toList());
+        LOGGER.info("Items found: {}", allItemsDto);
+        model.addAttribute(MANY_ITEMS_KEY, allItemsDto);
         return "items/all-items";
     }
 }

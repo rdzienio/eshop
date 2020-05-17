@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Data
@@ -22,6 +19,7 @@ import java.math.BigDecimal;
 // - no args constructor
 public class Item {
     @Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @GeneratedValue
     private Long id;
     private String itemName;

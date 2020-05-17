@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Item list</title>
 </head>
 <body>
     <h2>All items</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Item name</th>
+            <th>Price</th>
+            <th>Link</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${allItems}">
+            <td th:text="${item.itemName}">Dummy name</td>
+            <td th:text="${item.price}">$999</td>
+            <td><a th:href="@{'/items/'+${item.id}}" target="_blank" href="https://bit.ly/2TbreGi">Link to item</a></td>
+        </tr>
+        </tbody>
+    </table>
 </body>
 </html>
