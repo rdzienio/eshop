@@ -7,7 +7,7 @@
 </head>
 <body>
     <p>Displaying item...</p>
-    <p th:text="'Item id:' + ${itemsToShow.id}">Item id:</p>
+    <p th:text="'Item id:' + (${itemsToShow.id} ?: 'No id')">Item id:</p>
     <p th:text="'Item name:' + ${itemsToShow.itemName}">Item name:</p>
     <p th:text="'Item description:' + ${itemsToShow.description}">Item description:</p>
     <p th:text="'Item category:' + ${itemsToShow.category}">Item category:</p>
