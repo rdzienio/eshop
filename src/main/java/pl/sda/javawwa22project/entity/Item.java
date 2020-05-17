@@ -19,7 +19,8 @@ import java.math.BigDecimal;
 // - no args constructor
 public class Item {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
     private String itemName;
     private String description;
