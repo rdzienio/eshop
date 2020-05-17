@@ -8,9 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import pl.sda.javawwa22project.converter.ItemConverter;
+import pl.sda.javawwa22project.dto.ItemDto;
 import pl.sda.javawwa22project.entity.Item;
 import pl.sda.javawwa22project.service.ItemService;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
@@ -34,7 +36,7 @@ public class ItemController {
         LOGGER.info("getItemById with id: [{}]", id);
         var itemDto = itemService.findById(id)
                 .map(itemConverter::fromItem)
-                .orElse(null);
+                .orElse(new ItemDto(0L, null, null, null, BigDecimal.ZERO,0,null));
         model.addAttribute(ITEM_KEY, itemDto);
         return "items/show-item-page";
     }

@@ -1,0 +1,1 @@
+insert into shop_items(category, description, item_name, picture, price, quantity) values('covid_19', 'super maseczka po taniości', 'maseczka', 'nieznany', 40.0, 2);
