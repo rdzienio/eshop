@@ -27,9 +27,4 @@ public class Item {
     private BigDecimal price;
     private int quantity;
     private String picture;
-<<<<<<< HEAD
-//    private int any; // have fun:) look out!!!
-=======
-
->>>>>>> items-rd
 }
