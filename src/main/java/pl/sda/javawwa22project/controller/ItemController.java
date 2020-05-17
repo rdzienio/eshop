@@ -33,7 +33,7 @@ public class ItemController {
         LOGGER.info("getItemById with id: [{}]", id);
         var itemDto = itemService.findById(id)
                 .map(itemConverter::fromItem)
-                .orElse(new ItemDto(0L, null, null, null, BigDecimal.ZERO, 0, null));
+                .orElse(ItemDto.builder().build());
         model.addAttribute(ONE_ITEM_KEY, itemDto);
         return "items/show-item-page";
     }
