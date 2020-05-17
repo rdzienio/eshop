@@ -11,13 +11,11 @@ import java.util.List;
 @Controller
 public class ItemController {
 
-    // TODO
-    // metoda wyświetla 3 przykładowe przedmioty
     @GetMapping("all-items")
-    String getAllItems(Model model) {
-        List<Item> itemLis = new ArrayList<>();
-        // dodaj 3 przedmioty
-        model.addAttribute("items", itemLis);
+    String getAllItems(Model model){
+        List<Item> items = new ArrayList<>();
+
+        model.addAttribute("items", items);
         return "items/all-items";
     }
 }

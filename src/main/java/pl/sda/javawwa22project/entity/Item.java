@@ -11,22 +11,25 @@ import javax.persistence.Table;
 import java.math.BigDecimal;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "SHOP_ITEMS")
-// 1). define entity
-//  - id
-// - no args constructor
 public class Item {
+
     @Id
     @GeneratedValue
     private Long id;
+
     private String itemName;
     private String description;
     private String category;
     private BigDecimal price;
     private int quantity;
     private String picture;
+<<<<<<< HEAD
 //    private int any; // have fun:) look out!!!
+=======
+
+>>>>>>> items-rd
 }
