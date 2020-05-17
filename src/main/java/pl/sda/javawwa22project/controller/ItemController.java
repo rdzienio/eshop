@@ -13,10 +13,12 @@ import pl.sda.javawwa22project.service.ItemService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 @Controller
 public class ItemController {
 
+    public static String ITEM_KEY = "itemToShow";
     private static final Logger LOGGER = LoggerFactory.getLogger(ItemController.class);
     private final ItemService itemService;
     private final ItemConverter itemConverter;
@@ -28,12 +30,19 @@ public class ItemController {
 
     @GetMapping("/items/{id}")
     String getItemById(@PathVariable Long id, Model model) {
+        LOGGER.info("getItemById with id: [{}]", id);
         var itemDto = itemService.findById(id)
                 .map(itemConverter::fromItem)
                 .orElse(null);
-        model.addAttribute("item", itemDto);
-        return "";
+        model.addAttribute(ITEM_KEY, itemDto);
+        return "items/show-item-page";
     }
+
+/*    private void sortItems(){
+        Stream.of( new Item(1L, null, null, null, null, 5, null),
+                new Item(2L, null, null, null, null, 5, null))
+    .sorted());
+    }*/
 
     // TODO
     // metoda wyświetla 3 przykładowe przedmioty
