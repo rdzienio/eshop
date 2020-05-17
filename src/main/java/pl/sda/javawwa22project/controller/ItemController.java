@@ -12,7 +12,7 @@ import pl.sda.javawwa22project.dto.ItemDto;
 import pl.sda.javawwa22project.service.ItemService;
 
 import javax.validation.Valid;
-import java.math.BigDecimal;
+
 import java.util.stream.Collectors;
 
 // 4). define endpoint in controller
@@ -39,12 +39,6 @@ public class ItemController {
         model.addAttribute(ONE_ITEM_KEY, itemDto);
         return "items/show-item-page";
     }
-
-/*    private void sortItems(){
-        Stream.of( new Item(1L, null, null, null, null, 5, null),
-                new Item(2L, null, null, null, null, 5, null))
-    .sorted());
-    }*/
 
     @GetMapping("/all-items")
     String getAllItems(Model model) {
