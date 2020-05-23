@@ -2,10 +2,10 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${current-operation}">Title</title>
+    <title th:text="${current_operation}">Title</title>
 </head>
 <body>
-    <p th:text="${current-operation}">Operation...</p>
+    <p th:text="${current_operation}">Operation...</p>
     <form method="get" action="#" th:action="@{/item-save}">
         <label for="itemNameId">Item name:</label>
         <input type="text" id="itemNameId" name="itemName"><br>
