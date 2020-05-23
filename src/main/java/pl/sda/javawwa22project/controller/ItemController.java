@@ -33,7 +33,7 @@ public class ItemController {
     // /items/1
     // /items/1024
     @GetMapping("/items/{id}")
-    String displayItemById(@PathVariable Long id, Model model) {
+    public String displayItemById(@PathVariable Long id, Model model) {
         logger.info("displayItemById with id: [{}]", id);
         var itemDto = itemsService.findItemById(id)
             .map(itemConverter::fromItem)
@@ -44,7 +44,7 @@ public class ItemController {
     }
 
     @GetMapping("/all-items")
-    String getAllItems(Model model) {
+    public String getAllItems(Model model) {
         logger.info("getAllItems");
         var itemsToShow = itemsService.findAllItems()
             .stream()
@@ -56,14 +56,14 @@ public class ItemController {
     }
 
     @GetMapping("/add-item")
-    String addItem() {
+    public String addItem(Model model) {
         logger.info("addItem()");
 
         return "items/add-edit";
     }
 
     @PostMapping("/item-save")
-    String saveItem(@Valid ItemDto itemToSave) {
+    public String saveItem(@Valid ItemDto itemToSave) {
         return "redirect://items/" + itemToSave.getId();
     }
     // method reference example
