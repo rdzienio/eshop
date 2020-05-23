@@ -18,4 +18,16 @@ public class ItemConverter {
         .picture(item.getPicture())
         .build();
   }
+
+  public Item fromDto(ItemDto itemDto) {
+    return new Item(
+        itemDto.getId(),
+        itemDto.getItemName(),
+        itemDto.getDescription(),
+        itemDto.getCategory(),
+        itemDto.getPrice(),
+        itemDto.getQuantity(),
+        itemDto.getPicture()
+    );
+  }
 }
