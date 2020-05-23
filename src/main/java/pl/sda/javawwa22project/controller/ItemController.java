@@ -21,6 +21,7 @@ public class ItemController {
     private static final Logger logger = LoggerFactory.getLogger(ItemController.class);
     private static final String ONE_ITEM_KEY = "itemsToShow";
     private static final String MANY_ITEMS_KEY = "items";
+    private static final String CURRENT_OPERATION = "current-operation";
 
     private final ItemsService itemsService;
     private final ItemConverter itemConverter;
@@ -30,8 +31,10 @@ public class ItemController {
         this.itemConverter = itemConverter;
     }
 
+    // /authors/{name}/books/{books-name}
     // /items/1
-    // /items/1024
+    // /items/1024 - /items?id=1024
+    // /authors?name=Ania-Autorka&book="Ania z zielonego wzgórza"
     @GetMapping("/items/{id}")
     public String displayItemById(@PathVariable Long id, Model model) {
         logger.info("displayItemById with id: [{}]", id);
@@ -59,6 +62,7 @@ public class ItemController {
     public String addItem(Model model) {
         logger.info("addItem()");
 
+        model.addAttribute(CURRENT_OPERATION, "Adding new item");
         return "items/add-edit";
     }
 

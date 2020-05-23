@@ -2,11 +2,17 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title th:text="${current-operation}">Title</title>
 </head>
 <body>
-    <form method="post" action="#">
-        Edit/save item....
+    <p th:text="${current-operation}">Operation...</p>
+    <form method="get" action="#" th:action="@{/item-save}">
+        <input type="hidden" name="id" value="5">
+        <label for="name">First name</label>
+        <input id="name" type="text" name="nazwisko"><br>
+        <label for="last-name">Last name</label>
+        <input id="last-name" type="text" name="imie" value="michał"><br>
+        <input type="submit" value="Submit">
     </form>
 </body>
 </html>
