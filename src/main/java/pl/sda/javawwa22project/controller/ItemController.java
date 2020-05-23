@@ -61,7 +61,7 @@ public class ItemController {
         return "/items/add-edit";
     }
 
-    @PostMapping("/save-item")
+    @PostMapping("/item-save")
     public String saveItem(@Valid ItemDto itemToSave) {
 
         return "redirect://items" + itemToSave.getId();
