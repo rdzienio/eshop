@@ -6,7 +6,7 @@
 </head>
 <body>
 <p th:text="${current_operation}">Operation...</p>
-<form method="get" action="#" th:action="@{/item-save}">
+<form method="post" action="#" th:action="@{/item-save}">
     <input type="hidden" name="id">
     <label for="itemName">Item Name</label>
     <input type="text" name="itemName" id="itemName"><br>
@@ -15,9 +15,9 @@
     <label for="category">Category</label>
     <input type="text" name="category" id="category"><br>
     <label for="price">Price</label>
-    <input type="number" name="price" id="price"><br>
+    <input type="number" name="price" id="price" value="1"><br>
     <label for="quantity">Quantity</label>
-    <input type="number" name="quantity" id="quantity"><br>
+    <input type="number" name="quantity" id="quantity" value="1"><br>
 
     <input type="submit" value="Submit">
 </form>

@@ -33,4 +33,11 @@ public class ItemService {
         logger.info("Found item: [{}]", foundItem.orElse(null));
         return foundItem;
     }
+
+    public Item saveItem(Item itemToSave){
+        logger.info("saveItem() from ItemService with param: [{}]", itemToSave);
+        var itemSaved = itemRepository.save(itemToSave);
+        logger.info("Saved item: [{}]", itemSaved);
+        return itemSaved;
+    }
 }
