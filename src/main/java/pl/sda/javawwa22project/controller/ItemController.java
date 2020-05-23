@@ -67,9 +67,13 @@ public class ItemController {
     }
 
     @PostMapping("/item-save")
-    public String saveItem(@Valid ItemDto itemToSave) {
+    public String saveItem(ItemDto itemToSave) {
         logger.info("saveItem(), received param: [{}]", itemToSave);
-        return "redirect://items/" + itemToSave.getId();
+
+        var item = itemConverter.fromDto(itemToSave);
+        var savedItem = itemsService.saveItem(item);
+
+        return "redirect:/items/" + savedItem.getId();
     }
     // method reference example
 //    static class Sorter {

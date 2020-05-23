@@ -47,4 +47,11 @@ public class ItemsService {
     return foundItem;
   }
 
+  public Item saveItem(Item item) {
+    logger.info("saving item: [{}]", item);
+    var savedItem = itemsRepository.save(item);
+    logger.info("after saving: [{}]", savedItem);
+
+    return savedItem;
+  }
 }
