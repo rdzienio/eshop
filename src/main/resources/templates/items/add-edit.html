@@ -7,10 +7,18 @@
 <body>
 <p th:text="${current-operation}">Operation...</p>
 <form method="get" action="#" th:action="@{/item-save}">
-    <label for="name">First Name</label>
-    <input id="name" name="firstName" type="text"><br>
-    <label for="last-name">Last Name</label>
-    <input id="last-name" type="text" name="lastName"><br>
+    <input type="hidden" name="id">
+    <label for="itemName">Item Name</label>
+    <input type="text" name="itemName" id="itemName"><br>
+    <label for="description">Description</label>
+    <input type="text" name="description" id="description"><br>
+    <label for="category">Category</label>
+    <input type="text" name="category" id="category"><br>
+    <label for="price">Price</label>
+    <input type="number" name="price" id="price"><br>
+    <label for="quantity">Quantity</label>
+    <input type="number" name="quantity" id="quantity"><br>
+
     <input type="submit" value="Submit">
 </form>
 </body>
