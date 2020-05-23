@@ -21,6 +21,7 @@ public class ItemController {
 
     public static String ONE_ITEM_KEY = "itemToShow";
     public static String MANY_ITEMS_KEY = "allItems";
+    private static final String CURRENT_OPERATION = "current-operation";
     private static final Logger LOGGER = LoggerFactory.getLogger(ItemController.class);
     private final ItemService itemService;
     private final ItemConverter itemConverter;
@@ -31,7 +32,7 @@ public class ItemController {
     }
 
     @GetMapping("/items/{id}")
-    String getItemById(@PathVariable Long id, Model model) {
+    public String getItemById(@PathVariable Long id, Model model) {
         LOGGER.info("getItemById with id: [{}]", id);
         var itemDto = itemService.findById(id)
                 .map(itemConverter::fromItem)
@@ -41,7 +42,7 @@ public class ItemController {
     }
 
     @GetMapping("/all-items")
-    String getAllItems(Model model) {
+    public String getAllItems(Model model) {
         LOGGER.info("getAllItems");
         var allItemsDto = itemService.findAllItems()
                 .stream()
@@ -53,14 +54,15 @@ public class ItemController {
     }
 
     @GetMapping("/add-item")
-    String addItem() {
+    public String addItem(Model model) {
         LOGGER.info("addItem()");
 
+        model.addAttribute(CURRENT_OPERATION, "Adding new item");
         return "/items/add-edit";
     }
 
     @PostMapping("/save-item")
-    String saveItem(@Valid ItemDto itemToSave) {
+    public String saveItem(@Valid ItemDto itemToSave) {
 
         return "redirect://items" + itemToSave.getId();
     }
