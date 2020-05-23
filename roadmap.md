@@ -22,3 +22,5 @@ Sklep internegowy - roadmapa
 - obsługa koszyka
 - panel administracyjny
 - stylowanie aplikacji
+- dobre konwencje nazewnicze dla endpoint'ów
+- wyniesienie konfiguracji endpointów na zewnątrz

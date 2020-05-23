@@ -1,14 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="thymeleaf.org">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add & edit item</title>
+    <title th:text="${current_operation}">Title</title>
 </head>
 <body>
+    <p th:text="${current_operation}">Operation...</p>
+    <form method="get" action="#" th:action="@{/item-save}">
+        <label for="itemNameId">Item name:</label>
+        <input type="text" id="itemNameId" name="itemName"><br>
 
-<form method="post" action="/save-item">
-    Edit/save item...
-    <input type="submit" value="Save">
-</form>
+        <label for="descriptionId">Item description:</label>
+        <input type="text" id="descriptionId" name="description"><br>
+
+        <label for="categoryId">Category:</label>
+        <input type="text" id="categoryId" name="category"><br>
+
+        <label for="priceId">Price:</label>
+        <input type="number" id="priceId" name="price"><br>
+
+        <label for="quantityId">Quantity:</label>
+        <input type="number" id="quantityId" name="quantity"><br>
+
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>
