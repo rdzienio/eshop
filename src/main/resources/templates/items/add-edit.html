@@ -6,9 +6,10 @@
 </head>
 <body>
     <p th:text="${current_operation}">Operation...</p>
-    <form method="post" action="#" th:action="@{/item-save}">
+    <form method="post" action="#" th:object="${item}" th:action="@{/item-save}">
         <label for="itemNameId">Item name:</label>
-        <input type="text" id="itemNameId" name="itemName"><br>
+<!--        <input type="text" id="itemNameId" name="itemName"><br>-->
+        <input type="text" id="itemNameId" th:field="${item.itemName}"><br>
 
         <label for="descriptionId">Item description:</label>
         <input type="text" id="descriptionId" name="description"><br>

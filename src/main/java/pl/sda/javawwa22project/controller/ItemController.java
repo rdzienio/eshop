@@ -62,6 +62,7 @@ public class ItemController {
     public String addItem(Model model) {
         logger.info("addItem()");
 
+        model.addAttribute("item", ItemDto.builder().build());
         model.addAttribute(CURRENT_OPERATION, "Adding new item");
         return "items/add-edit";
     }
