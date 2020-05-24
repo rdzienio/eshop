@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
-    @GetMapping(value = {"/welcome", "/home", "/index"})
-    public String welcome(Model model) {
+    public @GetMapping({"/welcome", "/home", "/index"})
+    String welcome(Model model) {
         return "index";
     }
 }

@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="thymeleaf.org">
-
 <head>
     <meta charset="UTF-8">
     <title>Display Item</title>
 </head>
 <body>
-    <p>Displaying item...</p>
-    <p th:text="'Item id:' + (${itemsToShow.id} ?: 'No id')">Item id:</p>
-    <p th:text="'Item name:' + ${itemsToShow.itemName}">Item name:</p>
-    <p th:text="'Item description:' + ${itemsToShow.description}">Item description:</p>
-    <p th:text="'Item category:' + ${itemsToShow.category}">Item category:</p>
-    <p th:text="'Item price:' + ${itemsToShow.price}">Item price:</p>
-    <p th:text="'Item quantity:' + ${itemsToShow.quantity}">Item quantity:</p>
-    <p th:text="'Item picture:' + ${itemsToShow.picture}">Item picture:</p>
-    <br>
-    <a href="#" th:href="@{/all-items}">Return to all items</a>
+<p>Displaying item...</p>
+<p th:text="'Item id:' + (${itemToShow.id} ?: 'No id')">Item id:</p>
+<p th:text="'Item name: '+ ${itemToShow.itemName}">Item name: </p>
+<p th:text="'Item description: '+ ${itemToShow.description}">Item description: </p>
+<p th:text="'Item category: '+ ${itemToShow.category}">Item category: </p>
+<p th:text="'Item price: '+ ${itemToShow.price}">Item price: </p>
+<p th:text="'Item quantity: '+ ${itemToShow.quantity}">Item quantity: </p>
+<p th:text="'Item picture: '+ ${itemToShow.picture}">Item picture: </p>
+<br>
+<a th:href="@{/all-items}" href="all-items.html">Return to all items</a>
 </body>
 </html>
