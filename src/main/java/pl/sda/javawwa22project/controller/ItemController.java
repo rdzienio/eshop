@@ -22,6 +22,7 @@ public class ItemController {
     private static final String ONE_ITEM_KEY = "itemsToShow";
     private static final String MANY_ITEMS_KEY = "items";
     private static final String CURRENT_OPERATION = "current_operation";
+    private static final String CURRENT_ITEM = "item";
 
     private final ItemsService itemsService;
     private final ItemConverter itemConverter;
@@ -62,6 +63,7 @@ public class ItemController {
     public String addItem(Model model) {
         logger.info("addItem()");
 
+        model.addAttribute(CURRENT_ITEM, ItemDto.builder().build());
         model.addAttribute(CURRENT_OPERATION, "Adding new item");
         return "items/add-edit";
     }
