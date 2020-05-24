@@ -7,6 +7,7 @@
 <body>
 <p th:text="${current_operation}">Operation...</p>
 <form method="post" action="#" th:object="${item}" th:action="@{/item-save}">
+    <input type="hidden" th:field="*{id}">
     <label for="itemNameId">Item name:</label>
     <!--        <input type="text" id="itemNameId" name="itemName"><br>-->
     <input type="text" id="itemNameId" th:field="*{itemName}"><br>

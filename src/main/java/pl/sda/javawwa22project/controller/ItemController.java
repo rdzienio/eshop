@@ -9,9 +9,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.sda.javawwa22project.converter.ItemConverter;
 import pl.sda.javawwa22project.dto.ItemDto;
+import pl.sda.javawwa22project.entity.Item;
+import pl.sda.javawwa22project.exception.ItemNotFoundException;
 import pl.sda.javawwa22project.service.ItemsService;
 
 import javax.validation.Valid;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 // 4). define endpoint in controller
@@ -76,6 +79,17 @@ public class ItemController {
         var savedItem = itemsService.saveItem(item);
 
         return "redirect:/items/" + savedItem.getId();
+    }
+
+    @GetMapping("/edit-item/{id}")
+    public String editItem(Model model, @PathVariable("id") Long inputId){
+        logger.info("editItem() with id: [{}]", inputId);
+        Optional<Item> itemToEdit= itemsService.findItemById(inputId);
+        var itemDto = itemToEdit.map(itemConverter::fromItem).orElseThrow(()-> new ItemNotFoundException(String.format("Item with id [%d] not found", inputId)));
+        logger.info("Edit item: [{}]", itemDto);
+        model.addAttribute(CURRENT_ITEM, itemDto);
+        model.addAttribute(CURRENT_OPERATION, "Editing item with id: "+ inputId);
+        return "items/add-edit";
     }
     // method reference example
 //    static class Sorter {
