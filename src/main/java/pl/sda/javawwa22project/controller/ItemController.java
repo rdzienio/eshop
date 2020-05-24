@@ -22,6 +22,7 @@ public class ItemController {
     public static String ONE_ITEM_KEY = "itemToShow";
     public static String MANY_ITEMS_KEY = "allItems";
     private static final String CURRENT_OPERATION = "current_operation";
+    private static final String CURRENT_ITEM = "item";
     private static final Logger LOGGER = LoggerFactory.getLogger(ItemController.class);
     private final ItemService itemService;
     private final ItemConverter itemConverter;
@@ -56,7 +57,7 @@ public class ItemController {
     @GetMapping("/add-item")
     public String addItem(Model model) {
         LOGGER.info("addItem()");
-
+        model.addAttribute(CURRENT_ITEM, ItemDto.builder().build());
         model.addAttribute(CURRENT_OPERATION, "Adding new item");
         return "/items/add-edit";
     }

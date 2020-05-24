@@ -6,18 +6,17 @@
 </head>
 <body>
 <p th:text="${current_operation}">Operation...</p>
-<form method="post" action="#" th:action="@{/item-save}">
-    <input type="hidden" name="id">
+<form method="post" action="#" th:action="@{/item-save}" th:object="${item}">
     <label for="itemName">Item Name</label>
-    <input type="text" name="itemName" id="itemName"><br>
+    <input type="text" th:field="*{itemName}" id="itemName"><br>
     <label for="description">Description</label>
-    <input type="text" name="description" id="description"><br>
+    <input type="text" th:field="*{description}" id="description"><br>
     <label for="category">Category</label>
-    <input type="text" name="category" id="category"><br>
+    <input type="text" th:field="*{category}" id="category"><br>
     <label for="price">Price</label>
-    <input type="number" name="price" id="price" value="1"><br>
+    <input type="number" th:field="*{price}" id="price" value="1"><br>
     <label for="quantity">Quantity</label>
-    <input type="number" name="quantity" id="quantity" value="1"><br>
+    <input type="number" th:field="*{quantity}" id="quantity" value="1"><br>
 
     <input type="submit" value="Submit">
 </form>
