@@ -54,4 +54,9 @@ public class ItemsService {
 
     return savedItem;
   }
+
+  public void deleteItemById(Long id) {
+    // TODO: add logs
+    itemsRepository.deleteById(id);
+  }
 }

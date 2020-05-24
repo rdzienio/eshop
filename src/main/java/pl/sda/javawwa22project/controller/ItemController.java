@@ -52,6 +52,14 @@ public class ItemController {
         return "items/show-item-page";
     }
 
+    @GetMapping("/item-delete/{id}")
+    public String deleteItemById(Model model, @PathVariable Long id) {
+        logger.info("deleteItemById() - id: [{}]", id);
+        itemsService.deleteItemById(id);
+
+        return "redirect:/all-items";
+    }
+
     @GetMapping("/all-items")
     public String getAllItems(Model model) {
         logger.info("getAllItems");
