@@ -52,14 +52,6 @@ public class ItemController {
         return "items/show-item-page";
     }
 
-    @GetMapping("/item-delete/{id}")
-    public String deleteItemById(Model model, @PathVariable Long id) {
-        logger.info("deleteItemById() - id: [{}]", id);
-        itemsService.deleteItemById(id);
-
-        return "redirect:/all-items";
-    }
-
     @GetMapping("/all-items")
     public String getAllItems(Model model) {
         logger.info("getAllItems");
@@ -79,27 +71,6 @@ public class ItemController {
         model.addAttribute(CURRENT_ITEM, ItemDto.builder().build());
         model.addAttribute(CURRENT_OPERATION, "Adding new item");
         return "items/add-edit";
-    }
-
-    @GetMapping("/edit-item/{id}")
-    public String editIem(Model model, @PathVariable("id") Long inputId) {
-        logger.info("editIem() with id: [{}]", inputId);
-
-        Optional<Item> foundItem = itemsService.findItemById(inputId);
-        var itemDto = foundItem.map(itemConverter::fromItem)
-            .orElseThrow(() -> new ItemNotFoundException(String.format("Item with id [%d] not exists!!!", inputId)));
-
-        model.addAttribute(CURRENT_ITEM, itemDto);
-        model.addAttribute(CURRENT_OPERATION, "Editing item with id: " + inputId);
-        return "items/add-edit";
-    }
-
-    @ExceptionHandler(ItemNotFoundException.class)
-    public String errorPage(ItemNotFoundException exc, Model model) {
-        logger.warn("something is wrong...", exc);
-
-        model.addAttribute(EXCEPTION_MESSAGE, exc.getMessage());
-        return "exception/error-item-not-found";
     }
 
     @PostMapping("/item-save")
