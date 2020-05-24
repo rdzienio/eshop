@@ -2,6 +2,8 @@ package pl.sda.javawwa22project.restController;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.sda.javawwa22project.converter.ItemConverter;
 import pl.sda.javawwa22project.dto.ItemDto;
@@ -22,16 +24,20 @@ public class ItemRestController {
     }
 
     @GetMapping("/items/{id}")
-    public ItemDto displayItemById(@PathVariable Long id) {
+    public ResponseEntity<ItemDto> displayItemById(@PathVariable Long id) {
         logger.info("displayItemById with id: [{}]", id);
-        return itemsService.findItemById(id)
+        var result = itemsService.findItemById(id)
                 .map(itemConverter::fromItem)
-                .orElse(ItemDto.builder().build());
+                .orElse(null);
 
+        if (result != null)
+            return ResponseEntity.ok(result);
+        else
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @PostMapping("/item-save")
-    public ItemDto saveItem(ItemDto itemToSave) {
+    public ItemDto saveItem(@RequestBody ItemDto itemToSave) {
         logger.info("saveItem(), received param: [{}]", itemToSave);
 
         var item = itemConverter.fromDto(itemToSave);
