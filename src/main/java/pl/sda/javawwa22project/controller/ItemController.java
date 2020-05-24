@@ -45,8 +45,8 @@ public class ItemController {
     public String displayItemById(@PathVariable Long id, Model model) {
         logger.info("displayItemById with id: [{}]", id);
         var itemDto = itemsService.findItemById(id)
-            .map(itemConverter::fromItem)
-            .orElse(ItemDto.builder().build());
+                .map(itemConverter::fromItem)
+                .orElse(ItemDto.builder().build());
 
         model.addAttribute(ONE_ITEM_KEY, itemDto);
         return "items/show-item-page";
@@ -56,9 +56,9 @@ public class ItemController {
     public String getAllItems(Model model) {
         logger.info("getAllItems");
         var itemsToShow = itemsService.findAllItems()
-            .stream()
-            .map(itemConverter::fromItem)
-            .collect(Collectors.toList());
+                .stream()
+                .map(itemConverter::fromItem)
+                .collect(Collectors.toList());
 
         model.addAttribute(MANY_ITEMS_KEY, itemsToShow);
         return "items/all-items";
@@ -84,21 +84,28 @@ public class ItemController {
     }
 
     @GetMapping("/edit-item/{id}")
-    public String editItem(Model model, @PathVariable("id") Long inputId){
+    public String editItem(Model model, @PathVariable("id") Long inputId) {
         logger.info("editItem() with id: [{}]", inputId);
-        Optional<Item> itemToEdit= itemsService.findItemById(inputId);
-        var itemDto = itemToEdit.map(itemConverter::fromItem).orElseThrow(()-> new ItemNotFoundException(String.format("Item with id [%d] not found", inputId)));
+        Optional<Item> itemToEdit = itemsService.findItemById(inputId);
+        var itemDto = itemToEdit.map(itemConverter::fromItem).orElseThrow(() -> new ItemNotFoundException(String.format("Item with id [%d] not found", inputId)));
         logger.info("Edit item: [{}]", itemDto);
         model.addAttribute(CURRENT_ITEM, itemDto);
-        model.addAttribute(CURRENT_OPERATION, "Editing item with id: "+ inputId);
+        model.addAttribute(CURRENT_OPERATION, "Editing item with id: " + inputId);
         return "items/add-edit";
     }
 
     @ExceptionHandler(ItemNotFoundException.class)
-    public String errorPage(ItemNotFoundException itemNotFoundException, Model model){
+    public String errorPage(ItemNotFoundException itemNotFoundException, Model model) {
         logger.warn("Something went wrong...", itemNotFoundException);
         model.addAttribute(EXCEPTION_MESSAGE, itemNotFoundException.getMessage());
         return "exceptions/error-item-not-found";
+    }
+
+    @GetMapping("/item-delete/{id}")
+    public String deleteItemById(Model model, @PathVariable Long id){
+        logger.info("delete item with id: [{}]", id);
+        itemsService.deleteItemById(id);
+        return "redirect:/all-items";
     }
     // method reference example
 //    static class Sorter {
