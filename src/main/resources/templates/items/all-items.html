@@ -15,7 +15,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="item : ${allItems}">
+        <tr th:each="item : ${items}">
             <td th:text="${item.itemName}">Dummy name</td>
             <td th:text="${item.price}">$999</td>
             <td><a th:href="@{'/items/'+${item.id}}" target="_blank" href="https://bit.ly/2TbreGi">Link to item</a></td>
