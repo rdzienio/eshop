@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +27,7 @@ public class ItemController {
     private static final String MANY_ITEMS_KEY = "items";
     private static final String CURRENT_OPERATION = "current_operation";
     private static final String CURRENT_ITEM = "item";
+    private static final String EXCEPTION_MESSAGE = "exc_message";
 
     private final ItemsService itemsService;
     private final ItemConverter itemConverter;
@@ -82,6 +84,14 @@ public class ItemController {
         model.addAttribute(CURRENT_ITEM, itemDto);
         model.addAttribute(CURRENT_OPERATION, "Editing item with id: " + inputId);
         return "items/add-edit";
+    }
+
+    @ExceptionHandler(ItemNotFoundException.class)
+    public String errorPage(ItemNotFoundException exc, Model model) {
+        logger.warn("something is wrong...", exc);
+
+        model.addAttribute(EXCEPTION_MESSAGE, exc.getMessage());
+        return "exception/error-item-not-found";
     }
 
     @PostMapping("/item-save")
