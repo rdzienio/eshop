@@ -5,7 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import pl.sda.javawwa22project.entity.Item;
-import pl.sda.javawwa22project.respository.ItemsRepository;
+import pl.sda.javawwa22project.repository.ItemRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,9 +16,9 @@ import java.util.Optional;
 public class ItemsService {
 
   private static final Logger logger = LoggerFactory.getLogger(ItemsService.class);
-  private final ItemsRepository itemsRepository;
+  private final ItemRepository itemsRepository;
 
-  public ItemsService(final ItemsRepository itemsRepository) {
+  public ItemsService(final ItemRepository itemsRepository) {
     this.itemsRepository = itemsRepository;
 //    log.
     logger.debug("object ItemsService created - debug level");
