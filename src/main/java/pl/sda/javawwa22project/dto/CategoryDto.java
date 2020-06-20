@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Builder
@@ -13,9 +13,7 @@ public class CategoryDto {
 
     private Long id;
 
-    private String categoryName;
+    private String name;
 
-    private LocalDate created;
-
-    private LocalDate updated;
+    private List<ItemDto> items;
 }

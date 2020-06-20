@@ -1,6 +1,6 @@
 package pl.sda.javawwa22project.entity;
 
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,8 +8,8 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "SHOP_ITEMS")
 
@@ -24,7 +24,9 @@ public class Item {
     private Long id;
     private String itemName;
     private String description;
-    private String category;
+    private String stringCategory;
+    @ManyToOne
+    private Category category;
     private BigDecimal price;
     private int quantity;
     private String picture;
