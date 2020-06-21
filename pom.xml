@@ -10,9 +10,9 @@
     </parent>
     <groupId>pl.sda</groupId>
     <artifactId>javawwa22-project</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>javawwa22-project</name>
-    <description>Demo project for Spring Boot</description>
+    <description>CRUD e-shop for Spring Boot</description>
 
     <properties>
         <java.version>11</java.version>
