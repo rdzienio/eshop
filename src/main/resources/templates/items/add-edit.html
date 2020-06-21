@@ -11,6 +11,7 @@
     <title th:text="${current_operation}">Title</title>
 </head>
 <body>
+<div class="container">
 <p th:text="${current_operation}">Operation...</p>
 <form method="post" action="#" th:object="${item}" th:action="@{/item-save}">
     <input type="hidden" th:field="*{id}">
@@ -34,5 +35,6 @@
 
     <input type="submit" value="Submit">
 </form>
+</div>
 </body>
 </html>
