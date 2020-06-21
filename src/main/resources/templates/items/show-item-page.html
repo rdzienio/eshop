@@ -11,6 +11,7 @@
     <title>Display Item</title>
 </head>
 <body>
+<div class="container">
     <p>Displaying item...</p>
     <p th:text="'Item id:' + (${itemsToShow.id} ?: 'No id')">Item id:</p>
     <p th:text="'Item name:' + ${itemsToShow.itemName}">Item name:</p>
@@ -22,5 +23,6 @@
     <br>
     <a th:href="@{'/edit-item/' + ${itemsToShow.id}}" href="#">Edit Item</a><br><br>
     <a href="#" th:href="@{/all-items}">Return to all items</a>
+</div>
 </body>
 </html>

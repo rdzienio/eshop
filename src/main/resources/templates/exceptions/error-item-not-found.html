@@ -10,9 +10,11 @@
     <title>404 - item not  found</title>
 </head>
 <body>
+<div class="container">
 <h1>Ops, something went wrong!</h1>
 <h3 th:text="${exc_message}">Cause</h3>
 <br>
 <a href="#" th:href="@{/all-items}">Return to all items page.</a>
+</div>
 </body>
 </html>
